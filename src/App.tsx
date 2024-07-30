@@ -15,7 +15,8 @@ function App() {
           {name: "אודות", icon: <TextSnippet/>, href: "about", component: About },
           {name: "פרויקטים", icon: <Web/>, href: "projects", component: Projects },
           {name: "צור קשר", icon: <Contacts/>, href: "contact", component: Contact }
-        ]} color={'white'} backgroundcolor={'#000050'}/>    </>
+        ]} color={'white'} backgroundcolor={'#000030'}/>    
+    </>
   )
 }
 
