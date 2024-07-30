@@ -1,6 +1,6 @@
 import { Box, Button, Grid, SpeedDial, SpeedDialAction, Typography } from "@mui/material"
 import {Menu} from '@mui/icons-material'
-import IGenericPage from "../../interfaces/Igenericpage"
+import IGenericPage from "../../interfaces/genericpage"
 
 export const GenericPage = (props: {
     title: string,
