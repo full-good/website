@@ -14,7 +14,7 @@ export const GenericPage = (props: {
     return (
       <>
         <Grid container justifyContent="space-around" alignItems="center"
-        sx={{backgroundColor: backgroundcolor, color: color, zIndex: 1, width: '100vw', height: '20vh', position: "fixed", top: 0, right: 0, left: 0, margin: 0, borderBottom: "solid 3px " + color}}>
+        sx={{backgroundColor: backgroundcolor, color: color, zIndex: 2, width: '100vw', height: '20vh', position: "fixed", top: 0, right: 0, left: 0, margin: 0, borderBottom: "solid 3px " + color}}>
           <Grid item>
             <Box>
               <SpeedDial
