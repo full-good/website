@@ -15,16 +15,19 @@ import butterfly11 from "../../assets/Butterfly11.svg"
 import butterfly12 from "../../assets/Butterfly12.svg"
 import butterfly13 from "../../assets/Butterfly13.svg"
 import butterfly14 from "../../assets/Butterfly14.svg"
+import { useAppSelector } from "../../server/state/hooks"
 
 
 export const HomePage = () => {
 
+  const colors = useAppSelector((state) => state.colorsSlice); 
+
   return (
     <> 
       <Grid container justifyContent="center" alignItems="center" direction={"column"}
-      sx={{backgroundColor: '#000030', color: 'white', margin: 0,  width: '100vw', height: '100vh'}}>
-        <Typography variant="h1" color={"white"} fontWeight={"bold"}>full good</Typography>
-        <Typography variant="h4" color={"white"}>אתר שמכיל הכל</Typography>
+      sx={{backgroundColor: colors.backgroundcolor, color: colors.color, margin: 0,  width: '100vw', height: '100vh'}}>
+        <Typography variant="h1" color={colors.color} fontWeight={"bold"}>full good</Typography>
+        <Typography variant="h4" color={colors.color}>אתר שמכיל הכל</Typography>
       </Grid>
       <img src={butterfly} id="butterfly"/>
       <img src={butterfly1} id="butterfly1"/>
