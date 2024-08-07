@@ -2,6 +2,7 @@ import { Grid, Typography, TextField, styled, Button } from "@mui/material"
 import { Popup } from "./popup";
 import { useState } from "react";
 import { useAppSelector } from "../../server/state/hooks";
+import UseApiCall, { ApiCallType } from "../../server/apicalls/apicall";
 
 type ColorxTextFieldProps = {
   colorx?: string;
@@ -40,6 +41,7 @@ export const Contact = () => {
   const [subject, setSubject] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const httpCall = UseApiCall()
 
   const handleClose = () => {
     setOpen(false);
@@ -49,7 +51,7 @@ export const Contact = () => {
     setSubject('')
   };
 
-  const handleContact = () => {
+  const handleContact = async () => {
     const regexmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if(mail.length === 0 || name.length === 0 || subject.length === 0 || content.length === 0){
       setError('כל השדות הם חובה')
@@ -57,7 +59,10 @@ export const Contact = () => {
       setError('מייל לא תקין')
     } else {
       setError('')
-      setOpen(true)
+      const http = import.meta.env.VITE_HTTPCALL;        
+      const response = await httpCall(ApiCallType.POST, http + '/message', {mail, name, subject, content})
+      if(response)
+        setOpen(true)
     }
   }
 
