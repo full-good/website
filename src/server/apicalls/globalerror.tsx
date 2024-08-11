@@ -2,25 +2,40 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Typography } from '@mui/material';
 import { Popup } from '../../components/generic/popup';
 
-const ErrorContext = createContext<any | undefined>(undefined);
+interface ErrorContextType {
+    error: string | null;
+    setError: (error: string | null) => void;
+}
+
+const ErrorContext = createContext<ErrorContextType | undefined>(undefined);
 
 export const ErrorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [openError, setOpenError] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleClose = () => {
-        setOpenError(false);
+        setError(null);
     };
 
     return (
-        <ErrorContext.Provider value={{ openError, setOpenError }}>
+        <ErrorContext.Provider value={{ error, setError }}>
             {children}
-            <Popup title={'שגיאה!!'} content={<Typography>המערכת לא יכלה לבצע את הפעולה שרצית, נסה שוב או מאוחר יותר.</Typography>} open={openError} handleClose={handleClose} />
+            {error && (
+                <Popup
+                    title={'שגיאה!!'}
+                    content={<Typography>{error}</Typography>}
+                    open={!!error}
+                    handleClose={handleClose}
+                />
+            )}
         </ErrorContext.Provider>
     );
 };
 
-export const useErrorContext = () => {
+export const useErrorContext = (): ErrorContextType => {
     const context = useContext(ErrorContext);
+    if (context === undefined) {
+        throw new Error('useErrorContext must be used within an ErrorProvider');
+    }
     return context;
 };
 

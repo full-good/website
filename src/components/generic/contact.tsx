@@ -59,8 +59,7 @@ export const Contact = () => {
       setError('מייל לא תקין')
     } else {
       setError('')
-      const http = import.meta.env.VITE_HTTPCALL;        
-      const response = await httpCall(ApiCallType.POST, http + '/message', {mail, name, subject, content})
+      const response = await httpCall(ApiCallType.POST, '/message', {mail, name, subject, content})
       if(response)
         setOpen(true)
     }

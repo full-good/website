@@ -3,6 +3,9 @@ import {Contacts, Menu} from '@mui/icons-material'
 import IGenericPage from "../../interfaces/genericpage"
 import { Contact } from "./contact"
 import { useAppSelector } from "../../server/state/hooks"
+import { useState } from "react"
+import { Popup } from "./popup"
+import { LogIn } from "../fullgood/login"
 
 export const GenericPage = (props: {
     title: string,
@@ -11,6 +14,11 @@ export const GenericPage = (props: {
 
     const { title, actions } = props
     const colors = useAppSelector((state) => state.colorsSlice);
+    const [open, setOpen] = useState<boolean>(false);
+
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return (
       <>
@@ -52,7 +60,7 @@ export const GenericPage = (props: {
                   backgroundColor: colors.color,
                   color: colors.backgroundcolor
                 }
-              }}>התחבר</Button></Typography>
+              }} onClick={()=>setOpen(true)}>התחבר</Button></Typography>
           </Grid>
           <Grid item>
             <Typography color={colors.color} fontSize={35} fontWeight={"bold"}>{title}</Typography>
@@ -62,6 +70,7 @@ export const GenericPage = (props: {
           <div id={action.href}>{<action.component/>}</div>
         ))}
         <div id="contact">{<Contact/>}</div>
+        <Popup title={""} content={<LogIn handleCloseParent={handleClose}/>} open={open} handleClose={handleClose}/>
       </>
     )
   }
