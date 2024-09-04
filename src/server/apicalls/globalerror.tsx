@@ -24,7 +24,10 @@ export const ErrorProvider: React.FC<{ children: ReactNode }> = ({ children }) =
                     title={'שגיאה!!'}
                     content={<Typography>{error}</Typography>}
                     open={!!error}
-                    handleClose={handleClose}
+                    handleClose={handleClose} colors={{
+                        color: 'white',
+                        backgroundcolor: 'rgb(112, 1, 7)'
+                    }}
                 />
             )}
         </ErrorContext.Provider>
