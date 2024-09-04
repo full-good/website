@@ -4,7 +4,6 @@ import butterfly from "../../assets/Butterfly.svg"
 import butterfly1 from "../../assets/Butterfly1.svg"
 import butterfly2 from "../../assets/Butterfly2.svg"
 import butterfly3 from "../../assets/Butterfly3.svg"
-// import butterfly4 from "../../assets/Butterfly4.svg"
 import butterfly5 from "../../assets/Butterfly5.svg"
 import butterfly6 from "../../assets/Butterfly6.svg"
 import butterfly7 from "../../assets/Butterfly7.svg"
@@ -20,7 +19,7 @@ import { useAppSelector } from "../../server/state/hooks"
 
 export const HomePage = () => {
 
-  const colors = useAppSelector((state) => state.colorsSlice); 
+  const colors = useAppSelector((state) => state.colorsSlice.fullgood); 
 
   return (
     <> 

@@ -28,8 +28,8 @@ const UseApiCall = () => {
                     return responsePutId.data
             }
             return {message: 'not found'}
-        } catch (error: any) {
-            if(error.response.data.statusCode === 500)
+        } catch (error: any) {         
+            if(error.response === undefined || error.response.data.statusCode === 500)
                 setError('המערכת לא יכלה לבצע את הפעולה שרצית, נסה שוב או מאוחר יותר.');
             setError(error.response.data.message);
         } finally {

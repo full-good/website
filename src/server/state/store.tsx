@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import colorsSlice from "./colorslice";
+import userSlice from "./userslice";
 
 const Store = configureStore({
     reducer: {
-        colorsSlice
+        colorsSlice,
+        userSlice
     }
 })
 

@@ -3,6 +3,7 @@ import { Popup } from "../generic/popup";
 import { useState } from "react";
 import { useAppSelector } from "../../server/state/hooks";
 import UseApiCall, { ApiCallType } from "../../server/apicalls/apicall";
+import Cookies from 'js-cookie';
 
 type ColorxTextFieldProps = {
   colorx?: string;
@@ -37,7 +38,7 @@ export const LogIn = (props: {
 
   const { handleCloseParent } = props
 
-  const colors = useAppSelector((state) => state.colorsSlice);
+  const colors = useAppSelector((state) => state.colorsSlice.fullgood);
 
   const [open, setOpen] = useState<boolean>(false);
   const [signUp, setSignUp] = useState<boolean>(false);
@@ -50,6 +51,7 @@ export const LogIn = (props: {
   const handleClose = () => {
     setOpen(false);
     handleCloseParent()
+    window.location.reload()
   };
 
   const handleLogin = async () => {
@@ -64,13 +66,16 @@ export const LogIn = (props: {
       setError('')
       if(signUp){
         const response = await httpCall(ApiCallType.POST, '/user', {name, mail, password})
-        if(response)
+        if(response){
           setOpen(true)
+          Cookies.set('userId', response._id, { expires: 30 })
+        }
       } else {
         const response = await httpCall(ApiCallType.GET, `/user/login?mail=${mail}&password=${password}`)
         if(response){        
           setName(response.name)
-          setOpen(true)
+          setOpen(true)       
+          Cookies.set('userId', response._id, { expires: 30 })
         }
         else{
           setError('מייל או סיסמא שגויים')
@@ -99,7 +104,7 @@ export const LogIn = (props: {
               }} onClick={handleLogin}>אישור</Button>
               <Typography variant="overline" color={colors.backgroundcolor}>{error}</Typography>
             </Grid>
-            {open?<Popup title={name + ','} content={<Typography sx={{ fontSize: 17 }}> נרשמת למערכת בהצלחה!!</Typography>} open={open} handleClose={handleClose}/>:<></>}
+            {open?<Popup title={name + ','} content={<Typography sx={{ fontSize: 17 }}> נרשמת למערכת בהצלחה!!</Typography>} open={open} handleClose={handleClose} colors={colors}/>:<></>}
         </Grid>
     </>
   )

@@ -2,19 +2,25 @@ import { Box, Button, Grid, SpeedDial, SpeedDialAction, Typography } from "@mui/
 import {Contacts, Menu} from '@mui/icons-material'
 import IGenericPage from "../../interfaces/genericpage"
 import { Contact } from "./contact"
-import { useAppSelector } from "../../server/state/hooks"
 import { useState } from "react"
 import { Popup } from "./popup"
 import { LogIn } from "../fullgood/login"
+import { useAppSelector } from "../../server/state/hooks"
+import Cookies from 'js-cookie';
 
 export const GenericPage = (props: {
     title: string,
-    actions: IGenericPage[]
+    actions: IGenericPage[],
+    colors: {
+      color: string
+      backgroundcolor: string
+    }
   }) => {
 
-    const { title, actions } = props
-    const colors = useAppSelector((state) => state.colorsSlice);
+    const { title, actions, colors } = props
     const [open, setOpen] = useState<boolean>(false);
+
+    const user = useAppSelector((state) => state.userSlice); 
 
     const handleClose = () => {
       setOpen(false);
@@ -55,12 +61,19 @@ export const GenericPage = (props: {
                   />
               </SpeedDial>
             </Box>
-              <Typography color={colors.color} fontSize={25}>שלום אורח <Button sx={{ fontSize: 18, color: colors.backgroundcolor, backgroundColor: colors.color,
+              {user.status==="DETACHED"?<Typography color={colors.color} fontSize={25}>שלום אורח <Button sx={{ fontSize: 18, color: colors.backgroundcolor, backgroundColor: colors.color,
                 '&:hover': {
                   backgroundColor: colors.color,
                   color: colors.backgroundcolor
                 }
-              }} onClick={()=>setOpen(true)}>התחבר</Button></Typography>
+              }} onClick={()=>setOpen(true)}>התחבר</Button></Typography>:
+              <Typography color={colors.color} fontSize={25}> שלום {user.user.name} <Button sx={{ fontSize: 18, color: colors.backgroundcolor, backgroundColor: colors.color,
+                '&:hover': {
+                  backgroundColor: colors.color,
+                  color: colors.backgroundcolor
+                }
+              }} onClick={()=>{Cookies.remove('userId'); window.location.reload();}}>התנתק</Button></Typography>
+              }
           </Grid>
           <Grid item>
             <Typography color={colors.color} fontSize={35} fontWeight={"bold"}>{title}</Typography>
@@ -69,8 +82,8 @@ export const GenericPage = (props: {
         {actions.map((action) => (
           <div id={action.href}>{<action.component/>}</div>
         ))}
-        <div id="contact">{<Contact/>}</div>
-        <Popup title={""} content={<LogIn handleCloseParent={handleClose}/>} open={open} handleClose={handleClose}/>
+        <div id="contact">{<Contact colors={colors}/>}</div>
+        <Popup title={""} content={<LogIn handleCloseParent={handleClose}/>} open={open} handleClose={handleClose} colors={colors}/>
       </>
     )
   }
