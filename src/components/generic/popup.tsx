@@ -1,16 +1,18 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
-import { useAppSelector } from '../../server/state/hooks';
 
 export const Popup = (props: {
     title: string,
     content: React.ReactNode,
     open: boolean,
     handleClose: () => void,
+    colors: {
+        color: string
+        backgroundcolor: string
+    }
   }) => {
 
-    const colors = useAppSelector((state) => state.colorsSlice);
 
-    const { title, content, open, handleClose } = props
+    const { title, content, open, handleClose, colors } = props
 
     return (
         <>

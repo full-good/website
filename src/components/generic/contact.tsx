@@ -1,7 +1,6 @@
 import { Grid, Typography, TextField, styled, Button } from "@mui/material"
 import { Popup } from "./popup";
 import { useState } from "react";
-import { useAppSelector } from "../../server/state/hooks";
 import UseApiCall, { ApiCallType } from "../../server/apicalls/apicall";
 
 type ColorxTextFieldProps = {
@@ -31,9 +30,14 @@ const ColorxTextField = styled(TextField, {
   }
 }));
 
-export const Contact = () => {
+export const Contact = (props: {
+  colors: {
+    color: string
+    backgroundcolor: string
+  }
+}) => {
 
-  const colors = useAppSelector((state) => state.colorsSlice);
+  const {colors} = props
 
   const [open, setOpen] = useState<boolean>(false);
   const [mail, setMail] = useState<string>('');
@@ -59,8 +63,7 @@ export const Contact = () => {
       setError('מייל לא תקין')
     } else {
       setError('')
-      const http = import.meta.env.VITE_HTTPCALL;        
-      const response = await httpCall(ApiCallType.POST, http + '/message', {mail, name, subject, content})
+      const response = await httpCall(ApiCallType.POST, '/message', {mail, name, subject, content})
       if(response)
         setOpen(true)
     }
@@ -84,7 +87,7 @@ export const Contact = () => {
               }} onClick={handleContact}>שליחה</Button>
               <Typography variant="overline" color={colors.color}>{error}</Typography>
             </Grid>
-            {open?<Popup title={name + ','} content={<Typography sx={{ fontSize: 17 }}>ההודעה נקלטה במערכת בהצלחה!!</Typography>} open={open} handleClose={handleClose}/>:<></>}
+            {open?<Popup title={name + ','} content={<Typography sx={{ fontSize: 17 }}>ההודעה נקלטה במערכת בהצלחה!!</Typography>} open={open} handleClose={handleClose} colors={colors}/>:<></>}
         </Grid>
     </>
   )

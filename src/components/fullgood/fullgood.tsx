@@ -3,17 +3,11 @@ import { Home, TextSnippet, Web } from "@mui/icons-material"
 import { HomePage } from './homepage'
 import { About } from "./about"
 import { Projects } from "./projects"
-import { useAppDispatch } from '../../server/state/hooks'
-import { useEffect } from 'react'
-import { changeColors } from '../../server/state/colorslice'
+import { useAppSelector } from '../../server/state/hooks'
 
 export const FullGood = () => {
 
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(changeColors({color: 'white', backgroundcolor: '#000030'}))
-  }, []);
+  const colors = useAppSelector((state) => state.colorsSlice.fullgood);
 
   return (
     <>
@@ -21,7 +15,7 @@ export const FullGood = () => {
           {name: "עמוד ראשי", icon: <Home/>, href: "home", component: HomePage },
           {name: "אודות", icon: <TextSnippet/>, href: "about", component: About },
           {name: "פרויקטים", icon: <Web/>, href: "projects", component: Projects },
-        ]}/>    
+        ]} colors={colors}/>    
     </>
   )
 }
