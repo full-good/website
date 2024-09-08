@@ -9,7 +9,8 @@ const UseApiCall = () => {
     const apiCall = async (type: ApiCallType, url: string, data?: object): Promise<any> => {
         try {
             setLoading(true);
-            const http = import.meta.env.VITE_HTTPCALL;
+            // const http = import.meta.env.VITE_HTTPCALL;
+            const http = "https://server-nnqd.onrender.com";
             console.log(http);
             switch (type) {
                 case ApiCallType.GET:
