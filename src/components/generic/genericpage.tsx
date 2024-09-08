@@ -19,8 +19,7 @@ export const GenericPage = (props: {
 
     const { title, actions, colors } = props
     const [open, setOpen] = useState<boolean>(false);
-
-    const user = useAppSelector((state) => state.userSlice); 
+    let user = useAppSelector((state) => state.userSlice); 
 
     const handleClose = () => {
       setOpen(false);
