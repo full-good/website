@@ -6,7 +6,7 @@ const id = Cookies.get('userId');
 const http = import.meta.env.VITE_HTTPCALL;
 const initialState = {
     status: id===undefined?"DETACHED":"CONNECTED",
-    user: id===undefined?{}:(await (axios.get(http + `/user/auth/${id}`))).data
+    user: id===undefined?{}:async () => (await (axios.get(http + `/user/auth/${id}`))).data
 }
 
 export const userSlice = createSlice({
