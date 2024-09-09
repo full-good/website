@@ -4,8 +4,13 @@ import { HomePage } from './homepage'
 import { About } from "./about"
 import { Projects } from "./projects"
 import { useAppSelector } from '../../server/state/hooks'
+import { useEffect } from 'react'
 
 export const FullGood = () => {
+
+  useEffect(() => {
+    document.title = 'full good';
+  }, []);
 
   const colors = useAppSelector((state) => state.colorsSlice.fullgood);
 

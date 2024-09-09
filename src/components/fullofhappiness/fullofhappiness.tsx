@@ -3,8 +3,13 @@ import { Home, TextSnippet } from "@mui/icons-material"
 import { HomePage } from './homepage'
 import { About } from "./about"
 import { useAppSelector } from '../../server/state/hooks'
+import { useEffect } from 'react'
 
 export const FullOfHappiness = () => {
+
+  useEffect(() => {
+    document.title = 'full of happiness';
+  }, []);
 
   const colors = useAppSelector((state) => state.colorsSlice.fullofhappiness);
 
