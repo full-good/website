@@ -33,7 +33,7 @@ export const GenericPage = (props: {
             <Box>
               <SpeedDial
                 ariaLabel="SpeedDial basic example"
-                sx={{ position: 'fixed', right: '14%', zIndex: 2, top: '6%', 
+                sx={{ position: 'fixed', right: '10%', zIndex: 2, top: '6%', 
                   '& .MuiSpeedDial-fab': {
                     backgroundColor: colors.color
                   },
