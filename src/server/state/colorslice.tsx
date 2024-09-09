@@ -6,6 +6,10 @@ const initialState = {
     fullgood: {
         color: "white",
         backgroundcolor: "#000030"
+    },
+    fullofhappiness: {
+        color: "rgb(138, 118, 5)",
+        backgroundcolor: "black"
     }
 }
 

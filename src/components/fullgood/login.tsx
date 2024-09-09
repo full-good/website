@@ -1,36 +1,10 @@
-import { Grid, Typography, TextField, styled, Button } from "@mui/material"
+import { Grid, Typography, Button } from "@mui/material"
 import { Popup } from "../generic/popup";
 import { useState } from "react";
 import { useAppSelector } from "../../server/state/hooks";
 import UseApiCall, { ApiCallType } from "../../server/apicalls/apicall";
 import Cookies from 'js-cookie';
-
-type ColorxTextFieldProps = {
-  colorx?: string;
-};
-
-const ColorxTextField = styled(TextField, {
-  shouldForwardProp: (prop) => prop !== 'colorx',
-})<ColorxTextFieldProps>(({ colorx = 'black' }) => ({
-  '& .MuiInput-underline': {
-    borderBottom: `2px solid ${colorx}`, 
-  },
-  '& .MuiInput-underline:after': {
-    borderBottom: `2px solid ${colorx}`,
-  },
-  '& .MuiInputLabel-root': {
-    right: 0,
-    left: 'unset', 
-    textAlign: 'right', 
-    color: colorx,
-  },
-  '& .MuiInputLabel-shrink': {
-    color: `${colorx} !important`,
-  },
-  '& .MuiInputBase-input': {
-    color: colorx,
-  }
-}));
+import { ColorxTextField } from "../../style/colortextfield";
 
 export const LogIn = (props: {
     handleCloseParent: () => void,
