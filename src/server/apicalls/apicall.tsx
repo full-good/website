@@ -9,7 +9,7 @@ const UseApiCall = () => {
     const apiCall = async (type: ApiCallType, url: string, data?: object): Promise<any> => {
         try {
             setLoading(true);
-            const http = 'https://server-nnqd.onrender.com' + url;
+            const http = 'http://localhost:9000' + url;
             const https = import.meta.env.VITE_HTTPCALL + '' + url;
             console.log(`http: ${https} or ${http}`);
             switch (type) {
