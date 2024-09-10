@@ -9,23 +9,23 @@ const UseApiCall = () => {
     const apiCall = async (type: ApiCallType, url: string, data?: object): Promise<any> => {
         try {
             setLoading(true);
-            const http = import.meta.env.VITE_HTTPCALL;
-            console.log(`http: ${http} / ${url}`);            
+            const http = 'https://' + import.meta.env.VITE_HTTPCALL + '' + url;
+            console.log(`http: ${http}`);            
             switch (type) {
                 case ApiCallType.GET:
-                    const responseGet = await axios.get('https://' + http + "" + url)
+                    const responseGet = await axios.get(http)
                     return responseGet.data
                 case ApiCallType.POST:
-                    const responsePost = await axios.post('https://' + http + "" + url, data)
+                    const responsePost = await axios.post(http, data)
                     return responsePost.data
                 case ApiCallType.DELETE:
-                    const responseDelete = await axios.delete(http + "" + url)
+                    const responseDelete = await axios.delete(http)
                     return responseDelete.data
                 case ApiCallType.PUT:
-                    const responsePut = await axios.put(http + "" + url, data)
+                    const responsePut = await axios.put(http, data)
                     return responsePut.data
                 case ApiCallType.PUTID:
-                    const responsePutId = await axios.put(http + "" + url)
+                    const responsePutId = await axios.put(http)
                     return responsePutId.data
             }
             return {message: 'not found'}
