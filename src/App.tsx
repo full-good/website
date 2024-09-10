@@ -4,6 +4,7 @@ import { FullOfHappiness } from './components/fullofhappiness/fullofhappiness'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
+  console.log('Environment Variables:', import.meta.env);
 
   return (
     <>
