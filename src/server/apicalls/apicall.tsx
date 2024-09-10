@@ -9,7 +9,7 @@ const UseApiCall = () => {
     const apiCall = async (type: ApiCallType, url: string, data?: object): Promise<any> => {
         try {
             setLoading(true);
-            const http = 'http' + import.meta.env.VITE_HTTPCALL + '' + url;
+            const http = 'ht' + import.meta.env.VITE_HTTPCALL + '' + url;
             console.log(`http: ${http}`);            
             switch (type) {
                 case ApiCallType.GET:
