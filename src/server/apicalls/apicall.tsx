@@ -9,14 +9,14 @@ const UseApiCall = () => {
     const apiCall = async (type: ApiCallType, url: string, data?: object): Promise<any> => {
         try {
             setLoading(true);
-            const http = 'https://' + import.meta.env.VITE_HTTPCALL;
+            const http = import.meta.env.VITE_HTTPCALL;
             console.log(`http: ${http} / ${url}`);            
             switch (type) {
                 case ApiCallType.GET:
-                    const responseGet = await axios.get(http + "" + url)
+                    const responseGet = await axios.get('https://' + http + "" + url)
                     return responseGet.data
                 case ApiCallType.POST:
-                    const responsePost = await axios.post(http + "" + url, data)
+                    const responsePost = await axios.post('https://' + http + "" + url, data)
                     return responsePost.data
                 case ApiCallType.DELETE:
                     const responseDelete = await axios.delete(http + "" + url)
