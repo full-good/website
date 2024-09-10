@@ -10,6 +10,7 @@ const UseApiCall = () => {
         try {
             setLoading(true);
             const http = import.meta.env.VITE_HTTPCALL;
+            console.log(`http: ${http} / ${url}`);            
             switch (type) {
                 case ApiCallType.GET:
                     const responseGet = await axios.get(http + "" + url)
