@@ -8,6 +8,7 @@ export const Contact = (props: {
   colors: {
     color: string
     backgroundcolor: string
+    anothercolor: string
   }
 }) => {
 
@@ -48,12 +49,12 @@ export const Contact = (props: {
         <Grid container justifyContent="flex-start" alignItems="center" direction={'column'}
         sx={{backgroundColor: colors.backgroundcolor, color: colors.color, zIndex: 2, width: '100vw', height: '80vh', bottom: 0, right: 0, left: 0, margin: 0}}>
             <Typography variant="h5" fontWeight={'bold'} color={colors.color} paddingTop={10} paddingBottom={3}>צור קשר:</Typography>
-            <Grid container justifyContent="space-around" alignItems="center" direction={'row'} flexWrap={"wrap"} sx={{width: '70%'}}>
-              <ColorxTextField colorx={colors.color} id="mail" label="מייל" variant="standard" value={mail} sx={{ width: '45%' }} onChange={(e)=>setMail(e.target.value)}/>
-              <ColorxTextField colorx={colors.color} id="name" label="שם" variant="standard" value={name} sx={{ width: '45%' }} onChange={(e)=>setName(e.target.value)}/>
-              <ColorxTextField colorx={colors.color} id="subject" label="נושא" variant="standard" value={subject} sx={{ width: '95%' }} onChange={(e)=>setSubject(e.target.value)}/>
-              <ColorxTextField colorx={colors.color} id="content" label="תוכן" multiline rows={3} variant="standard" value={content} sx={{ width: '95%'}} onChange={(e)=>setContent(e.target.value)}/>
-              <Button sx={{ fontSize: 18, width: '95%', marginTop: 3, backgroundColor: colors.color, color: colors.backgroundcolor,
+            <Grid container justifyContent="space-around" alignItems="center" direction={'row'} flexWrap={"wrap"} sx={{width: '60%'}}>
+              <ColorxTextField borderColor={colors.anothercolor} textColor={colors.color} id="mail" label="מייל" variant="outlined" value={mail} sx={{ width: '49%', marginBottom: 2 }} onChange={(e)=>setMail(e.target.value)}/>
+              <ColorxTextField borderColor={colors.anothercolor} textColor={colors.color} id="name" label="שם" variant="outlined" value={name} sx={{ width: '49%', marginBottom: 2 }} onChange={(e)=>setName(e.target.value)}/>
+              <ColorxTextField borderColor={colors.anothercolor} textColor={colors.color} id="subject" label="נושא" variant="outlined" value={subject} sx={{ width: '99%', marginBottom: 2 }} onChange={(e)=>setSubject(e.target.value)}/>
+              <ColorxTextField borderColor={colors.anothercolor} textColor={colors.color} id="content" label="תוכן" multiline rows={3} variant="outlined" value={content} sx={{ width: '99%', marginBottom: 2 }} onChange={(e)=>setContent(e.target.value)}/>
+              <Button sx={{ fontSize: 18, width: '95%', backgroundColor: colors.color, color: colors.backgroundcolor,
                 '&:hover': {
                   color: colors.backgroundcolor,
                   backgroundColor: colors.color

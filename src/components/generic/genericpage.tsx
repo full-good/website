@@ -14,6 +14,7 @@ export const GenericPage = (props: {
     colors: {
       color: string
       backgroundcolor: string
+      anothercolor: string
     }
   }) => {
 

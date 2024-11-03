@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     color: "black",
     backgroundcolor: "white",
+    anothercolor: "#34F5C5",
     fullgood: {
         color: "white",
-        backgroundcolor: "#000030"
+        backgroundcolor: "#000030",
+        anothercolor: "#34F5C5",
     },
     fullofhappiness: {
         color: "rgb(138, 118, 5)",
