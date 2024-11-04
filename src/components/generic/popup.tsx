@@ -17,14 +17,14 @@ export const Popup = (props: {
     return (
         <>
             <Dialog open={open} onClose={handleClose} dir="rtl">
-                <DialogTitle sx={{color: colors.backgroundcolor, backgroundColor: colors.color}}>{title}</DialogTitle>
-                <DialogContent sx={{color: colors.backgroundcolor, backgroundColor: colors.color}}>
+                <DialogTitle sx={{color: colors.color, backgroundColor: colors.backgroundcolor}}>{title}</DialogTitle>
+                <DialogContent sx={{color: colors.color, backgroundColor: colors.backgroundcolor}}>
                 {content}
                 </DialogContent>
-                <DialogActions sx={{backgroundColor: colors.color}}>
-                <Button onClick={handleClose} sx={{ fontSize: 18, color: colors.backgroundcolor,
+                <DialogActions sx={{backgroundColor: colors.backgroundcolor}}>
+                <Button onClick={handleClose} sx={{ fontSize: 18, color: colors.color,
                     '&:hover': {
-                    color: colors.backgroundcolor,
+                    color: colors.color,
                     }
                 }}>סגור</Button>
                 </DialogActions>
