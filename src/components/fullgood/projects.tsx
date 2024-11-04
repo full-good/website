@@ -8,8 +8,8 @@ export const Projects = () => {
 
   return (
     <> 
-        <Grid container justifyContent="center" alignItems="center" direction={'column'} sx={{backgroundColor: colors.color}}>
-            <Typography variant="h5" fontWeight={'bold'} color={colors.backgroundcolor} paddingTop={15} paddingBottom={3}>פרויקטים:</Typography>
+        <Grid container justifyContent="center" alignItems="center" direction={'column'} sx={{backgroundColor: colors.backgroundcolor, width: '100vw'}}>
+            <Typography variant="h3" fontWeight={'bold'} color={colors.color} paddingTop={15} paddingBottom={3}>מסע לכוכבים</Typography>
             <Link to="/fullofhappiness" target="_blank">fullofhappiness</Link>
         </Grid>
     </>

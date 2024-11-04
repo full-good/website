@@ -1,5 +1,4 @@
-import { Box, Button, Grid, SpeedDial, SpeedDialAction, Typography } from "@mui/material"
-import {Contacts, Menu} from '@mui/icons-material'
+import { Box, Button, Grid, IconButton, styled, Tooltip, tooltipClasses, TooltipProps, Typography } from "@mui/material"
 import IGenericPage from "../../interfaces/genericpage"
 import { Contact } from "./contact"
 import { useState } from "react"
@@ -7,9 +6,22 @@ import { Popup } from "./popup"
 import { LogIn } from "../fullgood/login"
 import { useAppSelector } from "../../server/state/hooks"
 import Cookies from 'js-cookie';
+import { PersonOutline } from "@mui/icons-material"
+
+const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}));
 
 export const GenericPage = (props: {
-    title: string,
+    logo: string,
     actions: IGenericPage[],
     colors: {
       color: string
@@ -18,7 +30,7 @@ export const GenericPage = (props: {
     }
   }) => {
 
-    const { title, actions, colors } = props
+    const { logo, actions, colors } = props
     const [open, setOpen] = useState<boolean>(false);
     const user = useAppSelector((state) => state.userSlice); 
 
@@ -28,55 +40,33 @@ export const GenericPage = (props: {
 
     return (
       <>
-        <Grid container justifyContent="space-around" alignItems="center"
-        sx={{backgroundColor: colors.backgroundcolor, color: colors.color, zIndex: 2, width: '100vw', height: '20vh', position: "fixed", top: 0, right: 0, left: 0, margin: 0, borderBottom: "solid 3px " + colors.color}}>
-          <Grid item>
+        <Grid container justifyContent="space-between" alignItems="center"
+        sx={{backgroundColor: colors.backgroundcolor, width: '100vw', height: '13vh', position: "fixed", top: 0}}>
+          <Grid item marginRight={'30px'}>
             <Box>
-              <SpeedDial
-                ariaLabel="SpeedDial basic example"
-                sx={{ position: 'fixed', right: '10%', zIndex: 2, top: '6%', 
-                  '& .MuiSpeedDial-fab': {
-                    backgroundColor: colors.color
-                  },
-                  '&:hover': {
-                    backgroundColor: colors.color,
-                  }}}
-                icon={<Menu  sx={{color: colors.backgroundcolor}} fontSize="large"/>}
-                direction="down">
                 {actions.map((action) => (
-                    <SpeedDialAction
-                    key={action.href}
-                    icon={action.icon}
-                    tooltipTitle={action.name}
-                    onClick={()=>window.location.hash = '#'+action.href}
-                    sx={ {backgroundColor: colors.backgroundcolor, color: colors.color, '&:hover': {backgroundColor: colors.backgroundcolor} }}
-                  />
+                  <Button sx={{color: colors.color, border: '3px solid '+colors.anothercolor, borderRadius: '30px', margin: '5px'}} onClick={()=>window.location.hash = '#'+action.href}>{action.name}</Button>
                 ))}
-                  <SpeedDialAction
-                  key="contact"
-                  icon={<Contacts/>}
-                  tooltipTitle="צור קשר"
-                  onClick={()=>window.location.hash = '#contact'}
-                  sx={ {backgroundColor: colors.backgroundcolor, color: colors.color, '&:hover': {backgroundColor: colors.backgroundcolor} }}
-                  />
-              </SpeedDial>
-            </Box>
-              {user.status==="DETACHED"?<Typography color={colors.color} fontSize={25}>שלום אורח <Button sx={{ fontSize: 18, color: colors.backgroundcolor, backgroundColor: colors.color,
-                '&:hover': {
-                  backgroundColor: colors.color,
-                  color: colors.backgroundcolor
-                }
-              }} onClick={()=>setOpen(true)}>התחבר</Button></Typography>:
-              <Typography color={colors.color} fontSize={25}> שלום {user.user.name} <Button sx={{ fontSize: 18, color: colors.backgroundcolor, backgroundColor: colors.color,
-                '&:hover': {
-                  backgroundColor: colors.color,
-                  color: colors.backgroundcolor
-                }
-              }} onClick={()=>{Cookies.remove('userId'); window.location.reload();}}>התנתק</Button></Typography>
+                  <Button sx={{color: colors.color, border: '3px solid '+colors.anothercolor, borderRadius: '30px', margin: '5px'}} onClick={()=>window.location.hash = '#contact'}>שתפו אותנו במחשבות שלכם</Button>
+            <HtmlTooltip
+              title={
+                user.status==="DETACHED"?
+                <Box sx={{backgroundColor: colors.color, direction: 'rtl', padding: '5px'}}>
+                  <Typography sx={{color: colors.backgroundcolor, borderBottom: '1px solid '+colors.backgroundcolor}}>אורח</Typography>
+                  <Button sx={{color: colors.backgroundcolor}} onClick={()=>setOpen(true)}>הרשם / התחבר</Button>
+                </Box>
+                :<Box sx={{backgroundColor: colors.color, direction: 'rtl', padding: '5px'}}>
+                  <Typography sx={{color: colors.backgroundcolor, borderBottom: '1px solid '+colors.backgroundcolor}}>{user.user.name}</Typography>
+                  <Button sx={{color: colors.backgroundcolor}} onClick={()=>{Cookies.remove('userId'); window.location.reload();}}>התנתק</Button>
+                </Box>
               }
+            >
+              <IconButton><PersonOutline sx={{color: colors.anothercolor, border: '3px solid '+colors.anothercolor, borderRadius: '50px', fontSize: '40px'}}/></IconButton>
+            </HtmlTooltip>
+            </Box>
           </Grid>
-          <Grid item>
-            <Typography color={colors.color} fontSize={35} fontWeight={"bold"}>{title}</Typography>
+          <Grid item marginLeft={'30px'}>
+            <img src={logo} width={'200px'} style={{margin: '10px'}}/>
           </Grid>
         </Grid>
         {actions.map((action) => (
