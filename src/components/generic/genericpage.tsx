@@ -40,7 +40,7 @@ export const GenericPage = (props: {
 
     return (
       <>
-        <Grid container justifyContent="space-between" alignItems="center"
+        <Grid container justifyContent="space-between" alignItems="center" zIndex={10}
         sx={{backgroundColor: colors.backgroundcolor, width: '100vw', height: '13vh', position: "fixed", top: 0}}>
           <Grid item marginRight={'30px'}>
             <Box>

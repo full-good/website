@@ -18,7 +18,7 @@ export const BusinessManagement = () => {
 
   return (
     <>
-        <GenericPage title={"business management"} actions={[
+        <GenericPage logo={"business management"} actions={[
           {name: "עמוד ראשי", icon: <Home/>, href: "home", component: HomePage },
           {name: "אודות", icon: <TextSnippet/>, href: "about", component: About },
           {name: "עסקים", icon: <BusinessIcon/>, href: "business", component: Business },

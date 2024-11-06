@@ -1,0 +1,99 @@
+/* .slick-prev, .slick-next {
+    background-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    color: "#111F2E";
+  }
+  
+  .slick-prev {
+    left: -100px;
+  }
+  
+  .slick-next {
+    right: -100px;
+  }
+  
+  /* שינוי צורת החץ והצבע */
+  /* .slick-prev:before, .slick-next:before {
+    color: "#111F2E"; /* צבע החץ */
+    /* font-size: 50px; גודל החץ */
+    /* content: ''; /* לא להשתמש בתוכן ברירת המחדל */
+  /* } */
+/*   
+  .slick-prev:before {
+    content: '←';
+  }
+  
+  .slick-next:before {
+    content: '→';
+  }  */
+   
+  /* עיצוב החיצים עם אייקונים */
+.slick-prev, .slick-next {
+    background-color: rgba(0, 0, 0, 0.5); /* רקע חצי שקוף */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  /* מבטל את החץ ברירת המחדל */
+  .slick-prev:before, .slick-next:before {
+    content: '';
+  }
+  
+  /* הוספת אייקונים מותאמים אישית */
+  .slick-prev {
+    left: 10px;
+  }
+  
+  .slick-next {
+    right: 10px;
+  }
+  
+  /* הוספת אייקון חומרי מ-Material-UI */
+  .slick-prev {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .slick-next {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+
+  
+  
+  /* עיצוב כפתור הנקודה */
+  .slick-dots li button {
+    background-color: lightgreen;
+    color: red;
+    /* background-color: transparent; רקע שקוף */
+    border: 1px solid white; /* גבול לבן */
+    /* border-radius: 50%; עיגול */
+    /* width: 12px; גודל הנקודה */
+    height: 12px; /* גובה הנקודה */
+    padding: 0;
+    cursor: pointer; /* סמן היד */
+  }
+  
+  /* שינוי עיצוב הנקודה כאשר היא נבחרת (active) */
+  .slick-dots li.slick-active button {
+    background-color: "#34F5C5";
+    border-color: "#34F5C5";
+  }
+  
+  /* שינוי עיצוב הנקודה כאשר העכבר מרחף מעליה */
+  /* .slick-dots li button:hover {
+    background-color: lightgreen;
+    border-color: lightgreen;
+  } */
+  
+  

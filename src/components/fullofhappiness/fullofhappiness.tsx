@@ -15,7 +15,7 @@ export const FullOfHappiness = () => {
 
   return (
     <>
-        <GenericPage title={"full-of-happiness"} actions={[
+        <GenericPage logo={"full-of-happiness"} actions={[
           {name: "עמוד ראשי", icon: <Home/>, href: "home", component: HomePage },
           {name: "אודות", icon: <TextSnippet/>, href: "about", component: About },
         ]} colors={colors}/>

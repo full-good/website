@@ -1,5 +1,4 @@
 import { Button, Grid, Typography } from "@mui/material"
-import '../../style/butterflies.css'
 import { useAppSelector } from "../../server/state/hooks"
 
 
