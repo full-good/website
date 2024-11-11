@@ -1,9 +1,9 @@
-import { Grid, Typography, Button, IconButton } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import { Popup } from "./popup";
 import { useState } from "react";
 import UseApiCall, { ApiCallType } from "../../server/apicalls/apicall";
 import { ColorxTextField } from "../../style/colortextfield";
-import { ArrowBack } from "@mui/icons-material";
+import { ArrowButton } from "./arrowbutton";
 
 export const Contact = (props: {
   colors: {
@@ -58,15 +58,7 @@ export const Contact = (props: {
             </Grid>
             <Grid container justifyContent="space-between" alignItems="center" direction={'row'}  sx={{width: '60%'}}>
               <Typography variant="overline" fontSize={'18px'} color={colors.anothercolor} marginRight={'30px'}>{error}</Typography>
-              <Grid item>
-                <Button sx={{fontSize: 18, width: '110px', height: '35px', color: colors.color, border: '3px solid '+colors.anothercolor, borderRadius: '30px', marginLeft: '-10px',
-                '&:hover': {
-                    color: colors.backgroundcolor,
-                    backgroundColor: colors.anothercolor
-                  }
-                }} onClick={handleContact}>שליחה</Button>
-                <IconButton onClick={handleContact}><ArrowBack sx={{color: colors.backgroundcolor, backgroundColor: colors.anothercolor, border: '3px solid '+colors.anothercolor, borderRadius: '50px', fontSize: '30px'}}/></IconButton>
-              </Grid>
+              <ArrowButton words={"שליחה"} handle={handleContact} colors={colors}/>
             </Grid>
             {open?<Popup title={name + ','} content={<Typography sx={{ fontSize: 17 }}>ההודעה נקלטה במערכת בהצלחה!!</Typography>} open={open} handleClose={handleClose} colors={colors}/>:<></>}
         </Grid>

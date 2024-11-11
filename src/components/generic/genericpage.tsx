@@ -3,7 +3,7 @@ import IGenericPage from "../../interfaces/genericpage"
 import { Contact } from "./contact"
 import { useState } from "react"
 import { Popup } from "./popup"
-import { LogIn } from "../fullgood/login"
+import { LogIn } from "../webmind/login"
 import { useAppSelector } from "../../server/state/hooks"
 import Cookies from 'js-cookie';
 import { PersonOutline } from "@mui/icons-material"
@@ -73,7 +73,7 @@ export const GenericPage = (props: {
           <div id={action.href}>{<action.component/>}</div>
         ))}
         <div id="contact">{<Contact colors={colors}/>}</div>
-        <Popup title={""} content={<LogIn handleCloseParent={handleClose}/>} open={open} handleClose={handleClose} colors={colors}/>
+        <Popup title={""} content={<LogIn handleCloseParent={handleClose} colors={colors}/>} open={open} handleClose={handleClose} colors={colors}/>
       </>
     )
   }
