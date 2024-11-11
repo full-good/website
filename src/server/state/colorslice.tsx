@@ -1,22 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    color: "black",
-    backgroundcolor: "white",
-    fullgood: {
+    webmind: {
         color: "white",
         backgroundcolor: "#111F2E",
         anothercolor: "#34F5C5",
     },
-    fullofhappiness: {
-        color: "rgb(138, 118, 5)",
-        backgroundcolor: "black",
-        anothercolor: "#34F5C5",
+    happiness: {
+        color: "#F2E1D2", // #FEEEC4
+        backgroundcolor: "#BA8230",
+        anothercolor: "black",
     },
-    businessmanagement: {
-        color: "white",
-        backgroundcolor: "black",
-        anothercolor: "#34F5C5",
+    business: {
+        color: "black",
+        backgroundcolor: "white",
+        anothercolor: "#BD00FF",
     }
 
 }

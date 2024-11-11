@@ -3,7 +3,7 @@ import { useAppSelector } from "../../server/state/hooks"
 
 export const About = () => {
 
-  const colors = useAppSelector((state) => state.colorsSlice.fullgood);
+  const colors = useAppSelector((state) => state.colorsSlice.webmind);
 
   return (
     <> 

@@ -25,8 +25,8 @@ export const ErrorProvider: React.FC<{ children: ReactNode }> = ({ children }) =
                     content={<Typography>{error}</Typography>}
                     open={!!error}
                     handleClose={handleClose} colors={{
-                        color: 'white',
-                        backgroundcolor: 'rgb(112, 1, 7)'
+                        color: 'rgb(112, 1, 7)',
+                        backgroundcolor: 'white'
                     }}
                 />
             )}
