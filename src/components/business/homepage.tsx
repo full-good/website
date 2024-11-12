@@ -4,7 +4,6 @@ import { keyframes } from '@mui/system';
 import { useAppSelector } from '../../server/state/hooks';
 import { ArrowButton } from '../generic/arrowbutton';
 
-// אנימציה למעבר של הטקסט
 const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -16,12 +15,10 @@ const fadeIn = keyframes`
   }
 `;
 
-// רשימת המשפטים
 const quotes = [
-  'ניהול עסקים מוצלח מתחיל כאן',
-  'המערכת שלנו תעזור לך לייעל את התהליכים',
-  'עקוב אחר ביצועי הצוות ושפר את התפוקה',
-  'כל הכלים להצלחה שלך במקום אחד'
+  'לעוף עם העסק לשמיים',
+  'להגשים את החלום שלך',
+  'לגעת בכוכבים בדרך להצלחה',
 ];
 
 export const HomePage = () => {
