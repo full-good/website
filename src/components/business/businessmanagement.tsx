@@ -4,6 +4,7 @@ import { useAppSelector } from '../../server/state/hooks'
 import { useEffect } from 'react'
 import { About } from './about'
 import { Business } from './business';
+import { Numbers } from './numbers'
 
 export const BusinessManagement = () => {
 
@@ -17,8 +18,9 @@ export const BusinessManagement = () => {
     <>
         <GenericPage logo={"business management"} actions={[
           {name: "כוכב חדש", href: "home", component: HomePage },
-          {name: "השאיפה שלנו", href: "about", component: About },
+          {name: "שאיפה לשמיים", href: "about", component: About },
           {name: "עסקים בתעופה", href: "business", component: Business },
+          {name: "בדרך להצלחה", href: "numbers", component: Numbers },
         ]} colors={colors}/>
     </>
   )

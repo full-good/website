@@ -1,5 +1,5 @@
 import './App.css'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { WebMind } from './components/webmind/webmind'
 import { Happiness } from './components/happiness/happiness'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -15,7 +15,6 @@ function App() {
           <Route path="/" element={<WebMind />} />
           <Route path="/happiness" element={<Happiness />} />
           <Route path="/business" element={<BusinessManagement/>} />
-
         </Routes>
       </Router>
     </>
