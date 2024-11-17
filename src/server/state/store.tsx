@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import colorsSlice from "./colorslice";
-import userSlice, { fetchUser } from "./userslice";
 import Cookies from 'js-cookie';
+import colorsSlice from "./colorslice";
+import userSlice, { fetchUser } from "./userslice"
+import businesSlice, { fetchBusiness } from "./business";
 
 const Store = configureStore({
     reducer: {
         colorsSlice,
-        userSlice
+        userSlice,
+        businesSlice
     }
 })
 
@@ -18,3 +20,4 @@ const id = Cookies.get('userId');
 if (id) {
   Store.dispatch(fetchUser());
 }
+Store.dispatch(fetchBusiness());
